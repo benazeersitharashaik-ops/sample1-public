@@ -1,185 +1,376 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Passion Designing</title>
+    <title>LUXE — Fashion Design Studio</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
             scroll-behavior: smooth;
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: #fffaf7;
-            color: #333;
+            background: #faf7f4;
+            color: #222;
         }
 
-        header {
-            background: #fff;
-            padding: 20px 8%;
+        /* NAVBAR */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 7%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
         }
 
         .logo {
             font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: bold;
-            color: #a85d75;
+            font-size: 30px;
+            letter-spacing: 4px;
+            font-weight: 600;
         }
 
-        nav a {
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav ul li a {
             text-decoration: none;
-            color: #333;
-            margin-left: 25px;
-            font-size: 15px;
+            color: #222;
+            font-size: 14px;
+            transition: 0.3s;
         }
 
-        nav a:hover {
-            color: #a85d75;
+        nav ul li a:hover {
+            color: #a56b55;
         }
 
+        /* HERO */
         .hero {
-            min-height: 90vh;
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #fce4ec, #fff7f2);
+            padding: 100px 7% 50px;
+            background: #eee8e3;
+        }
+
+        .hero-text {
+            width: 50%;
+            padding-right: 40px;
+        }
+
+        .small-title {
+            letter-spacing: 5px;
+            font-size: 13px;
+            color: #9a6b59;
+            margin-bottom: 20px;
         }
 
         .hero h1 {
             font-family: 'Playfair Display', serif;
-            font-size: 65px;
-            color: #8d435c;
-            margin-bottom: 20px;
+            font-size: clamp(55px, 7vw, 100px);
+            line-height: 0.95;
+            font-weight: 500;
+        }
+
+        .hero h1 span {
+            font-style: italic;
+            color: #a56b55;
         }
 
         .hero p {
-            font-size: 18px;
-            max-width: 650px;
-            margin: auto;
-            line-height: 1.8;
+            margin: 30px 0;
+            max-width: 500px;
             color: #666;
+            line-height: 1.8;
         }
 
         .btn {
             display: inline-block;
-            margin-top: 30px;
-            padding: 13px 30px;
-            background: #a85d75;
+            padding: 14px 32px;
+            background: #222;
             color: white;
             text-decoration: none;
-            border-radius: 30px;
+            font-size: 13px;
+            letter-spacing: 2px;
+            transition: 0.3s;
         }
 
         .btn:hover {
-            background: #8d435c;
+            background: #a56b55;
+            transform: translateY(-3px);
         }
 
+        .hero-image {
+            width: 50%;
+            height: 650px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.8s;
+        }
+
+        .hero-image:hover img {
+            transform: scale(1.04);
+        }
+
+        /* SECTION */
         section {
-            padding: 80px 8%;
+            padding: 100px 7%;
         }
 
-        .title {
+        .section-title {
             text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 40px;
-            color: #8d435c;
-            margin-bottom: 45px;
+            margin-bottom: 55px;
         }
 
-        .services {
+        .section-title small {
+            color: #a56b55;
+            letter-spacing: 4px;
+        }
+
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 50px;
+            font-weight: 500;
+            margin-top: 10px;
+        }
+
+        /* COLLECTION */
+        .collection {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
         }
 
         .card {
             background: white;
-            padding: 35px 25px;
-            text-align: center;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
+            position: relative;
         }
 
-        .card h3 {
-            color: #a85d75;
-            margin: 15px 0;
+        .card-image {
+            height: 500px;
+            overflow: hidden;
         }
 
-        .card p {
-            color: #777;
-            line-height: 1.7;
-        }
-
-        .portfolio {
-            background: #fdf0f3;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery img {
+        .card-image img {
             width: 100%;
-            height: 300px;
+            height: 100%;
             object-fit: cover;
-            border-radius: 15px;
-            transition: 0.4s;
+            transition: 0.6s;
         }
 
-        .gallery img:hover {
-            transform: scale(1.04);
+        .card:hover img {
+            transform: scale(1.07);
         }
 
+        .card-info {
+            padding: 22px;
+        }
+
+        .card-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+        }
+
+        .card-info p {
+            color: #888;
+            margin-top: 5px;
+        }
+
+        /* ABOUT */
         .about {
-            max-width: 850px;
-            margin: auto;
-            text-align: center;
-            line-height: 2;
-            color: #666;
+            display: flex;
+            gap: 70px;
+            align-items: center;
+            background: #eee8e3;
         }
 
+        .about-image {
+            width: 45%;
+            height: 550px;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-text {
+            width: 55%;
+        }
+
+        .about-text h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 55px;
+            font-weight: 500;
+        }
+
+        .about-text p {
+            margin: 25px 0;
+            color: #666;
+            line-height: 1.9;
+        }
+
+        /* MODELS */
+        .models {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .model {
+            height: 480px;
+            overflow: hidden;
+        }
+
+        .model img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.6s;
+        }
+
+        .model:hover img {
+            transform: scale(1.06);
+        }
+
+        /* CONTACT */
         .contact {
             text-align: center;
-            background: #fff;
-        }
-
-        footer {
-            text-align: center;
-            padding: 25px;
-            background: #8d435c;
+            background: #222;
             color: white;
         }
 
-        @media(max-width: 700px) {
+        .contact h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 60px;
+            font-weight: 400;
+        }
+
+        .contact p {
+            margin: 20px auto 35px;
+            color: #bbb;
+        }
+
+        .contact .btn {
+            background: white;
+            color: #222;
+        }
+
+        .contact .btn:hover {
+            background: #a56b55;
+            color: white;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #171717;
+            color: #888;
+            text-align: center;
+            padding: 25px;
+            font-size: 13px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 900px) {
+
+            nav ul {
+                gap: 15px;
+            }
+
+            .hero {
+                flex-direction: column;
+            }
+
+            .hero-text,
+            .hero-image {
+                width: 100%;
+            }
+
+            .hero-text {
+                padding: 40px 0;
+            }
+
+            .hero-image {
+                height: 550px;
+            }
+
+            .collection {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                flex-direction: column;
+            }
+
+            .about-image,
+            .about-text {
+                width: 100%;
+            }
+
+            .models {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+
             nav {
+                padding: 15px 5%;
+            }
+
+            nav ul {
                 display: none;
             }
 
-            .hero h1 {
-                font-size: 42px;
+            section {
+                padding: 70px 5%;
             }
 
-            .title {
-                font-size: 32px;
+            .hero {
+                padding: 90px 5% 40px;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+            }
+
+            .section-title h2 {
+                font-size: 40px;
+            }
+
+            .models {
+                grid-template-columns: 1fr;
+            }
+
+            .contact h2 {
+                font-size: 45px;
             }
         }
     </style>
@@ -187,124 +378,202 @@
 
 <body>
 
-<header>
-    <div class="logo">Passion Designing</div>
-
+    <!-- NAVBAR -->
     <nav>
-        <a href="#home">Home</a>
-        <a href="#services">Services</a>
-        <a href="#portfolio">Designs</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <div class="logo">LUXE</div>
+
+        <ul>
+            <li><a href="#home">HOME</a></li>
+            <li><a href="#collection">COLLECTION</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#models">MODELS</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
     </nav>
-</header>
 
-<section class="hero" id="home">
-    <div>
-        <h1>Passion Designing</h1>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+
+        <div class="hero-text">
+
+            <div class="small-title">
+                FASHION DESIGN STUDIO
+            </div>
+
+            <h1>
+                Wear Your<br>
+                <span>Story.</span>
+            </h1>
+
+            <p>
+                Discover timeless fashion created for those who
+                believe style is a form of self-expression.
+                Explore our latest designer collection.
+            </p>
+
+            <a href="#collection" class="btn">
+                EXPLORE COLLECTION
+            </a>
+
+        </div>
+
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1000&q=85"
+                 alt="Fashion Model">
+        </div>
+
+    </section>
+
+
+    <!-- COLLECTION -->
+    <section id="collection">
+
+        <div class="section-title">
+            <small>OUR COLLECTION</small>
+            <h2>Latest Designs</h2>
+        </div>
+
+        <div class="collection">
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85"
+                         alt="Fashion Dress">
+                </div>
+
+                <div class="card-info">
+                    <h3>Elegant Evening</h3>
+                    <p>Luxury Collection</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=85"
+                         alt="Fashion Model">
+                </div>
+
+                <div class="card-info">
+                    <h3>Modern Muse</h3>
+                    <p>Spring Collection</p>
+                </div>
+            </div>
+
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=800&q=85"
+                         alt="Fashion Design">
+                </div>
+
+                <div class="card-info">
+                    <h3>Urban Chic</h3>
+                    <p>Street Collection</p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+
+        <div class="about-image">
+            <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=900&q=85"
+                 alt="Fashion Designer">
+        </div>
+
+        <div class="about-text">
+
+            <div class="small-title">
+                ABOUT LUXE
+            </div>
+
+            <h2>
+                Fashion is<br>
+                an attitude.
+            </h2>
+
+            <p>
+                LUXE is a contemporary fashion design studio
+                dedicated to creating elegant, confident and
+                expressive clothing.
+            </p>
+
+            <p>
+                Every piece is designed with attention to detail,
+                beautiful fabrics and modern silhouettes.
+            </p>
+
+            <a href="#contact" class="btn">
+                WORK WITH US
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- MODELS -->
+    <section id="models">
+
+        <div class="section-title">
+            <small>THE FACES</small>
+            <h2>Our Models</h2>
+        </div>
+
+        <div class="models">
+
+            <div class="model">
+                <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=700&q=85"
+                     alt="Model">
+            </div>
+
+            <div class="model">
+                <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=700&q=85"
+                     alt="Model">
+            </div>
+
+            <div class="model">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=700&q=85"
+                     alt="Model">
+            </div>
+
+            <div class="model">
+                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=700&q=85"
+                     alt="Model">
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+
+        <h2>Let's Create Something Beautiful.</h2>
 
         <p>
-            Where creativity meets fashion.
-            Discover beautiful designs, unique styles
-            and elegant fashion created with passion.
+            Have a fashion project in mind? Let's bring your vision to life.
         </p>
 
-        <a href="#portfolio" class="btn">Explore Designs</a>
-    </div>
-</section>
+        <a href="mailto:hello@luxefashion.com" class="btn">
+            CONTACT US
+        </a>
 
-<section id="services">
-    <h2 class="title">Our Services</h2>
+    </section>
 
-    <div class="services">
 
-        <div class="card">
-            <h3>👗 Dress Designing</h3>
-            <p>
-                Beautiful and customized dress designs
-                created according to your style.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>✨ Bridal Wear</h3>
-            <p>
-                Elegant bridal collections designed
-                for your special moments.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>💎 Custom Designs</h3>
-            <p>
-                Unique fashion designs specially
-                created according to your requirements.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>🌸 Styling</h3>
-            <p>
-                Complete styling ideas for parties,
-                weddings and special occasions.
-            </p>
-        </div>
-
-    </div>
-</section>
-
-<section class="portfolio" id="portfolio">
-
-    <h2 class="title">Our Designs</h2>
-
-    <div class="gallery">
-
-        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?auto=format&fit=crop&w=800&q=80">
-
-        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=80">
-
-        <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=80">
-
-        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80">
-
-    </div>
-
-</section>
-
-<section id="about">
-
-    <h2 class="title">About Us</h2>
-
-    <div class="about">
-
-        <p>
-            Passion Designing is a creative fashion designing studio
-            focused on creating elegant, modern and unique styles.
-            Our goal is to turn your ideas into beautiful designs
-            that express your personality.
-        </p>
-
-    </div>
-
-</section>
-
-<section class="contact" id="contact">
-
-    <h2 class="title">Contact Us</h2>
-
-    <p>📞 +91 98765 43210</p>
-    <p>📧 passiondesigning@gmail.com</p>
-    <p>📍 Hyderabad, India</p>
-
-    <a href="mailto:passiondesigning@gmail.com" class="btn">
-        Contact Designer
-    </a>
-
-</section>
-
-<footer>
-    © 2026 Passion Designing | All Rights Reserved
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        © 2026 LUXE Fashion Design Studio | All Rights Reserved
+    </footer>
 
 </body>
 </html>
+```
